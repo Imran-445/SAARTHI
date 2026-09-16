@@ -154,7 +154,36 @@ npm run preview
 
 ---
 
+## ☁️ Deploying on Vercel via GitHub (Zero-Configuration)
+
+This project has been pre-configured and optimized for **1-click continuous deployment on Vercel** directly from your GitHub repository.
+
+### How it Works:
+1. **Frontend**: The React 18 + Vite client builds into `client/dist` and is hosted on Vercel's global Edge CDN.
+2. **Serverless Backend (`/api`)**: The Express backend is exported as a Vercel Serverless Function via [`api/index.js`](file:///d:/MY%20NOTES/HACKATHON/DigItal%20Pioneer/api/index.js). All `/api/*` endpoints (`/api/schemes`, `/api/partners`, `/api/chat`, `/api/health`) work natively in production without needing an external VPS.
+3. **SPA Routing**: [`vercel.json`](file:///d:/MY%20NOTES/HACKATHON/DigItal%20Pioneer/vercel.json) rewrites all client-side routes (`/schemes`, `/calculator`, `/partners`, `/about`, `/scheme-finder`) to `index.html` to eliminate 404 errors on page refresh.
+
+### Step-by-Step Vercel Deployment:
+1. Push this project to your GitHub repository:
+   ```bash
+   git add .
+   git commit -m "Optimize project for Vercel deployment"
+   git push origin main
+   ```
+2. Go to **[vercel.com](https://vercel.com)** and log in with your GitHub account.
+3. Click **"Add New..."** → **"Project"**.
+4. Select your **`SAARTHI`** repository from the list and click **"Import"**.
+5. Keep all default settings:
+   - **Framework Preset**: `Vite` (or `Other`)
+   - **Root Directory**: `./` (leave as default root)
+   - **Build Command**: Automatically configured by `vercel.json` (`npm run build`)
+   - **Output Directory**: Automatically configured by `vercel.json` (`client/dist`)
+6. Click **"Deploy"**. Vercel will build and launch your site with a live `https://*.vercel.app` URL within ~60 seconds!
+
+---
+
 ## 👥 Team Details
 - **Team Name**: DigITal Pioneer
 - **Hackathon**: Smart India Hackathon 2026
 - **Problem Statement**: 26092
+
